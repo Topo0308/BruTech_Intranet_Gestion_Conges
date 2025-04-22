@@ -1,0 +1,42 @@
+<div class="flash-container position-fixed top-0 end-0 p-3" style="z-index: 1100;">
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ type }} alert-dismissible fade show shadow mb-3" role="alert">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-{{ type == 'success' ? 'check-circle' : (type == 'danger' ? 'exclamation-triangle' : 'info-circle') }} me-2"></i>
+                    <div>{{ message|raw }}</div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const alerts = document.querySelectorAll('.alert');
+    alerts.forEach(alert => {
+        setTimeout(() => {
+            alert.classList.add('fade');
+            setTimeout(() => alert.remove(), 300);
+        }, 5000);
+    });
+});
+</script>
+
+<style>
+.alert {
+    border: none;
+    border-left: 4px solid;
+    min-width: 300px;
+}
+.alert-success {
+    border-left-color: #2e7d32;
+}
+.alert-danger {
+    border-left-color: #c62828;
+}
+.alert-warning {
+    border-left-color: #f9a825;
+}
+</style>

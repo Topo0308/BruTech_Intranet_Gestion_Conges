@@ -1,0 +1,12 @@
+{% macro display(statut) %}
+    {% set config = {
+        'en_attente': { color: 'warning', icon: 'clock' },
+        'accepte': { color: 'success', icon: 'check-circle' },
+        'refuse': { color: 'danger', icon: 'times-circle' }
+    } %}
+    
+    <span class="badge bg-{{ config[statut].color }} rounded-pill">
+        <i class="fas fa-{{ config[statut].icon }} me-1"></i>
+        {{ statut|replace({'_': ' '})|title }}
+    </span>
+{% endmacro %}
