@@ -63,4 +63,3 @@ CREATE TRIGGER update_conge_timestamp
 BEFORE UPDATE ON conge
 FOR EACH ROW
 EXECUTE FUNCTION update_timestamp();
-);
