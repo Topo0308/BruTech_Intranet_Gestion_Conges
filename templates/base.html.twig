@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Intranet de gestion des congés{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background-color: #e9f0f3;
+        }
+        header {
+            background-color: #007c8c;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            margin-left: 1rem;
+            text-decoration: none;
+        }
+        .container {
+            padding: 1rem;
+        }
+        .solde {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .box {
+            background-color: #f57c00;
+            border-radius: 15px;
+            padding: 1rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .box input, .box select, .box button {
+            margin: 0.5rem 0;
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: none;
+        }
+        .box input[type="file"] {
+            background: white;
+            color: black;
+        }
+        .btn-submit {
+            background-color: #ff9800;
+            color: white;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        table th, table td {
+            padding: 0.5rem;
+            text-align: left;
+        }
+        table th {
+            background-color: #007c8c;
+            color: white;
+        }
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .btn {
+            background-color: #007c8c;
+            color: white;
+            border: none;
+            padding: 0.3rem 0.6rem;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            .box, .solde, table {
+                font-size: 0.9rem;
+            }
+            table th, table td {
+                display: block;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+{% include 'components/navbar.html.twig' %}
+{% include 'components/flash_messages.html.twig' %}
+    <header>
+        <div><strong>Intranet de gestion des congés</strong></div>
+        <nav>
+            <a href="{{ path('dashboard') }}">Tableau de bord</a>
+            <a href="{{ path('app_logout') }}">Déconnexion</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        {% block body %}{% endblock %}
+    </div>
+</body>
+{% include 'components/spinner.html.twig' %}
+</html>

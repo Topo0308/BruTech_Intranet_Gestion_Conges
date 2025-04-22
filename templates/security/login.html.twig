@@ -1,0 +1,25 @@
+% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+    <h2>Connexion</h2>
+
+    {% if error %}
+        <div style="color: red; margin-bottom: 1rem;">
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+        </div>
+    {% endif %}
+
+    <form method="post">
+        <div class="box">
+            <label for="username">Email</label>
+            <input type="text" id="username" name="_username" required>
+
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="_password" required>
+
+            <button class="btn-submit" type="submit">Se connecter</button>
+        </div>
+    </form>
+{% endblock %}
