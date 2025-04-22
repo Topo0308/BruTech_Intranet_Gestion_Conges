@@ -1,0 +1,14 @@
+<tr>
+    <td>{{ demande.dateDebut|date('Y-m-d') }}</td>
+    <td>{{ demande.dateFin|date('Y-m-d') }}</td>
+    <td>
+        {% if demande.statut == 'en_attente' %}
+            En attente
+        {% elseif demande.statut == 'accepte' %}
+            Accepté
+        {% else %}
+            Refusé
+        {% endif %}
+    </td>
+    <td><a href="#" class="btn-consult">Consulter</a></td>
+</tr>

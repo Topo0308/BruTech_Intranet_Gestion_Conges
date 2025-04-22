@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+{% block title %}Mon espace employé{% endblock %}
+
+{% block stylesheets %}
+<style>
+    body {
+        background-color: #f1f5f9;
+        font-family: sans-serif;
+    }
+    .layout {
+        background-color: #00838f;
+        color: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        max-width: 1000px;
+        margin: auto;
+    }
+    .form-box {
+        background-color: #f57c00;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        color: white;
+        margin-bottom: 2rem;
+    }
+    .btn-orange {
+        background-color: #ffa726;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: bold;
+    }
+    table {
+        background-color: white;
+        color: #333;
+        border-radius: 10px;
+        width: 100%;
+        overflow: hidden;
+    }
+    table th, table td {
+        padding: 0.8rem;
+    }
+    table th {
+        background-color: #f9f9f9;
+    }
+    .btn-consult {
+        background-color: #007e87;
+        color: white;
+        border: none;
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="layout">
+    <h2 class="mb-3">Intranet de gestion des congés</h2>
+    <p><strong>Solde de congés :</strong> {{ app.user.soldeConges }} jours</p>
+
+    <div class="form-box">
+        <h4 class="mb-3">Demande de congé</h4>
+        {{ form_start(form) }}
+            <div class="row mb-3">
+                <div class="col-md-6">{{ form_row(form.dateDebut) }}</div>
+                <div class="col-md-6">{{ form_row(form.dateFin) }}</div>
+            </div>
+            <div class="mb-3">{{ form_row(form.type) }}</div>
+            <div class="mb-3">{{ form_row(form.justificatif) }}</div>
+            <button type="submit" class="btn-orange">Poser une demande</button>
+        {{ form_end(form) }}
+    </div>
+
+    <h5 class="mb-2">Mes demandes</h5>
+    <table>
+        <thead>
+            <tr>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for demande in demandes %}
+                {% include 'employe/_demande_item.html.twig' with { demande: demande } %}
+            {% else %}
+                <tr>
+                    <td colspan="4" class="text-center">Aucune demande enregistrée</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
