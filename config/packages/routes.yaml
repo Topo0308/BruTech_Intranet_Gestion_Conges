@@ -1,0 +1,30 @@
+# Configuration des routes 
+
+# Route pour la page d'accueil de l'employé
+employe_dashboard:
+    path: /employe
+    controller: App\Controller\EmployeController::dashboard
+
+# Route pour la demande de congé de l'employé
+employe_demande:
+    path: /employe/demande
+    controller: App\Controller\EmployeController::nouvelleDemande
+
+# Route pour le tableau de bord du manager
+manager_dashboard:
+    path: /manager
+    controller: App\Controller\ManagerController::dashboard
+
+# Route pour le traitement des congés par le manager
+manager_traitement:
+    path: /manager/traitement/{id}
+    controller: App\Controller\ManagerController::traiter
+
+# Routes de sécurité
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+app_logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
