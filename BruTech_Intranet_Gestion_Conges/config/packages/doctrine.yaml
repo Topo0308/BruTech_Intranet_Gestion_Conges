@@ -2,7 +2,7 @@ doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
         types:
-            json: Symfony\Component\Doctrine\DBAL\Types\JsonType;
+            json: Doctrine\DBAL\Types\JsonType
 
     orm:
         auto_generate_proxy_classes: true
