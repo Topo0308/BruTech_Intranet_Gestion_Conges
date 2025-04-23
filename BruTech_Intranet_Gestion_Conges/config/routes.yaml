@@ -1,5 +1,12 @@
-app_employe_dashboard:
-    path: /employe/dashboard
-    controller: App\Controller\EmployeController::dashboard
-    methods: [GET, POST]
-    
+employee_dashboard:
+  path: /employee/dashboard
+  controller: App\Controller\EmployeeController::dashboard
+  methods: [GET, POST]
+  requirements:
+    _role: ROLE_EMPLOYE
+
+manager_dashboard:
+  path: /manager/dashboard
+  controller: App\Controller\ManagerController::dashboard
+  requirements:
+    _role: ROLE_MANAGER

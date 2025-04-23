@@ -27,7 +27,7 @@ class CongeType extends AbstractType
                 'choices' => [
                     'Congé payé (CP)' => 'cp',
                     'RTT' => 'rtt',
-                    'Maladie' => 'maladie'
+                    'Maladie' => 'maladie',
                 ],
                 'label' => 'Type'
             ])
