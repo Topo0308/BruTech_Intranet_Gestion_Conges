@@ -1,0 +1,14 @@
+app_manager_dashboard:
+    path: /manager
+    controller: App\Controller\ManagerController::dashboard
+    methods: GET
+
+app_manager_traitement:
+    path: /manager/traitement/{id}
+    controller: App\Controller\ManagerController::traiterDemande
+    methods: [GET, POST]
+
+app_manager_calendrier:
+    path: /manager/calendrier
+    controller: App\Controller\ManagerController::calendrier
+    methods: GET

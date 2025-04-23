@@ -1,0 +1,14 @@
+<tr>
+    <td>{{ demande.user.email }}</td>
+    <td>{{ demande.dateDebut|date('d/m/Y') }} - {{ demande.dateFin|date('d/m/Y') }}</td>
+    <td>{{ demande.type|capitalize }}</td>
+    <td>
+        <span class="badge bg-warning text-dark">En attente</span>
+    </td>
+    <td>
+        <a href="{{ path('app_manager_traitement', {'id': demande.id}) }}" 
+           class="btn btn-sm btn-primary">
+            <i class="fas fa-edit"></i> Traiter
+        </a>
+    </td>
+</tr>
