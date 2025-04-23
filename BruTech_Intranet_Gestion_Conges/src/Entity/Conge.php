@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\ongeRepository;
+use App\Repository\CongeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -39,5 +39,75 @@ class Conge
     #[ORM\ManyToOne(targetEntity: User::class)]
     private ?User $user = null;
 
-    // Getters/Setters...
+    // **Getter et Setter pour 'type'**
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    // **Getter et Setter pour 'dateDebut'**
+    public function getDateDebut(): ?\DateTimeInterface
+    {
+        return $this->dateDebut;
+    }
+
+    public function setDateDebut(\DateTimeInterface $dateDebut): self
+    {
+        $this->dateDebut = $dateDebut;
+        return $this;
+    }
+
+    // **Getter et Setter pour 'dateFin'**
+    public function getDateFin(): ?\DateTimeInterface
+    {
+        return $this->dateFin;
+    }
+
+    public function setDateFin(\DateTimeInterface $dateFin): self
+    {
+        $this->dateFin = $dateFin;
+        return $this;
+    }
+
+    // **Getter et Setter pour 'joursDemandes'**
+    public function getJoursDemandes(): ?int
+    {
+        return $this->joursDemandes;
+    }
+
+    public function setJoursDemandes(int $joursDemandes): self
+    {
+        $this->joursDemandes = $joursDemandes;
+        return $this;
+    }
+
+    // **Getter et Setter pour 'statut'**
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(string $statut): self
+    {
+        $this->statut = $statut;
+        return $this;
+    }
+
+    // **Getter et Setter pour 'user'**
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+        return $this;
+    }
 }

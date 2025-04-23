@@ -1,3 +1,5 @@
+<?php
+
 // src/Controller/AuthController.php
 namespace App\Controller;
 
