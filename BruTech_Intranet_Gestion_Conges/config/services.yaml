@@ -1,8 +1,10 @@
 services:
     _defaults:
-        autowire: true       # Automatically injects dependencies
-        autoconfigure: true  # Automatically registers your services as commands, event listeners, etc.
+        autowire: true      # Active l'autowiring des services
+        autoconfigure: true # Active l'autoconfiguration des services
+        public: false       # Les services sont privés par défaut
 
-    # Custom services
-    # Example:
-    # App\Service\MyCustomService: ~
+    # Controllers are automatically registered as services
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{Entity,Repository,Migration}'

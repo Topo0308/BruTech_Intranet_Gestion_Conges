@@ -11,3 +11,7 @@ manager_dashboard:
     controller: App\Controller\ManagerController::dashboard
     requirements:
         _role: ROLE_MANAGER
+
+conge_new:
+    path: /conge/new
+    controller: App\Controller\CongeController::new

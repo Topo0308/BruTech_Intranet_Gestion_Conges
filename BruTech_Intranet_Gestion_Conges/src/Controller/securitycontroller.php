@@ -1,3 +1,5 @@
+<?php
+
 // src/Controller/SecurityController.php
 
 namespace App\Controller;
@@ -8,12 +10,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SecurityController extends AbstractController
 {
-    /**
-     * @Route("/login", name="login")
-     */
+    #[Route('/login', name: 'login')]
     public function login(): Response
     {
-        // Render the login page template
         return $this->render('security/login.html.twig');
     }
+
+    #[Route('/logout', name: 'app_logout')]  // Utilisation de app_logout comme nom de route pour la déconnexion
+    public function logout(): void
+    {
+        // Symfony gère automatiquement la déconnexion ici, donc cette méthode reste vide
+        // La redirection sera gérée automatiquement par le firewall
+    }
 }
+

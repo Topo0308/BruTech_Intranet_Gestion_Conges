@@ -1,6 +1,7 @@
 security:
     password_hashers:
-        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+        App\Entity\User:
+            algorithm: auto
 
     providers:
         app_user_provider:
@@ -14,16 +15,22 @@ security:
             security: false
 
         main:
-            lazy: true
-            provider: app_user_provider
+            # Le firewall principal
             form_login:
                 login_path: login
                 check_path: login
+
             logout:
-                path: logout
-                target: /
+                path: /logout  # Utilisation de la route /logout pour la déconnexion
+                target: /      # Redirection vers la page d'accueil après déconnexion
+
+            # Activer "remember me" si nécessaire
+            remember_me:
+                secret: '%env(APP_SECRET)%'
+                lifetime: 31536000 # 1 an
+                path: /
 
     access_control:
+        # Contrôle d'accès en fonction des rôles
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/manager, roles: ROLE_MANAGER }
-        - { path: ^/employee, roles: ROLE_EMPLOYEE }
+        - { path: ^/profile, roles: ROLE_USER }
