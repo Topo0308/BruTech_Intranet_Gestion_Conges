@@ -23,3 +23,8 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+/var/
+/vendor/
+/assets/vendor/
+README.md
+dataBase_conge.sql
