@@ -8,30 +8,33 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
-/**
- * Formulaire de création/modification de congé
- */
 class CongeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('date_debut', DateType::class, [
+                'widget' => 'single_text',
+                'label' => 'Date de début'
+            ])
+            ->add('date_fin', DateType::class, [
+                'widget' => 'single_text',
+                'label' => 'Date de fin'
+            ])
             ->add('type', ChoiceType::class, [
                 'choices' => [
-                    'Congé payé' => 'CP',
-                    'Maladie' => 'MALADIE',
-                    'Maternité' => 'MATERNITE'
-                ]
+                    'Congé payé (CP)' => 'cp',
+                    'RTT' => 'rtt',
+                    'Maladie' => 'maladie',
+                ],
+                'label' => 'Type'
             ])
-            ->add('dateDebut', DateType::class, [
-                'widget' => 'single_text'
-            ])
-            ->add('dateFin', DateType::class, [
-                'widget' => 'single_text'
-            ])
-            ->add('joursDemandes', NumberType::class);
+            ->add('justificatifFile', VichFileType::class, [
+                'required' => false,
+                'label' => 'Justificatif'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -1,13 +1,12 @@
-# config/routes.yaml
-
 employee_dashboard:
-    path: /employee/dashboard
-    controller: App\Controller\EmployeeController::dashboard
-    requirements:
-        _role: ROLE_EMPLOYE
+  path: /employee/dashboard
+  controller: App\Controller\EmployeeController::dashboard
+  methods: [GET, POST]
+  requirements:
+    _role: ROLE_EMPLOYE
 
 manager_dashboard:
-    path: /manager/dashboard
-    controller: App\Controller\ManagerController::dashboard
-    requirements:
-        _role: ROLE_MANAGER
+  path: /manager/dashboard
+  controller: App\Controller\ManagerController::dashboard
+  requirements:
+    _role: ROLE_MANAGER
