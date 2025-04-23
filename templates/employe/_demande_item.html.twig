@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+{% block title %}Historique de mes congés{% endblock %}
+
+{% block stylesheets %}
+<style>
+    body {
+        background-color: #eef2f5;
+    }
+    .layout {
+        background-color: #00838f;
+        color: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        max-width: 900px;
+        margin: auto;
+    }
+    table {
+        background-color: white;
+        color: #333;
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 1rem;
+    }
+    table th, table td {
+        padding: 0.8rem;
+        text-align: center;
+    }
+    table th {
+        background-color: #f3f3f3;
+    }
+    .badge-attente {
+        background-color: #ffcc00;
+        color: #000;
+        padding: 0.3rem 0.7rem;
+        border-radius: 8px;
+    }
+    .badge-accepte {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 0.3rem 0.7rem;
+        border-radius: 8px;
+    }
+    .badge-refuse {
+        background-color: #e53935;
+        color: #fff;
+        padding: 0.3rem 0.7rem;
+        border-radius: 8px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="layout mt-5">
+    <h2>📚 Historique de mes demandes</h2>
+
+    {% if demandes is not empty %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
+                    <th>Type</th>
+                    <th>Statut</th>
+                    <th>Justificatif</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for demande in demandes %}
+                    <tr>
+                        <td>{{ demande.dateDebut|date('Y-m-d') }}</td>
+                        <td>{{ demande.dateFin|date('Y-m-d') }}</td>
+                        <td>{{ demande.type }}</td>
+                        <td>
+                            {% if demande.statut == 'en_attente' %}
+                                <span class="badge-attente">En attente</span>
+                            {% elseif demande.statut == 'accepte' %}
+                                <span class="badge-accepte">Accepté</span>
+                            {% elseif demande.statut == 'refuse' %}
+                                <span class="badge-refuse">Refusé</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if demande.justificatif %}
+                                <a href="{{ asset('uploads/justificatifs/' ~ demande.justificatif) }}" target="_blank">📎 Voir</a>
+                            {% else %}
+                                —
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="mt-4 text-light">Aucune demande enregistrée dans votre historique.</p>
+    {% endif %}
+</div>
+{% endblock %}
