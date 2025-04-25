@@ -1,0 +1,10 @@
+
+  "files.associations": {
+    "*.html.twig": "twig"
+  },
+  "emmet.includeLanguages": {
+    "twig": "html"
+  },
+  "twig-language.feature.commentBlocks": true,
+  "twig-language.feature.recognizeTagName": true
+}
